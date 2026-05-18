@@ -95,7 +95,6 @@ typedef sercom_usart_int_registers_t sercom_usart_registers_t;
 /* (SERCOM_I2CM_STATUS) The Bus state is waiting for a transaction to be initialized  */
 #define SERCOM_I2CM_STATUS_BUSSTATE_IDLE_Val    _UINT16_(0x1)
 
-#endif /* MICROCHIP_COMMON_SERCOM_PIC32CK_SG_GC_H_ */
  /* Both Master and Slave modes use the same hardware register addresses and bit
  * fields the only difference is in the naming,of the registers and
  * definitions. SPIS and SPIM. Therefore, those definitions are used as generic
