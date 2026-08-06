@@ -16,7 +16,11 @@ add_subdirectory_ifdef(CONFIG_MICROCHIP_PIC32C  pic32c)
 if (CONFIG_CPU_CORTEX_M0PLUS)
     # button library
     add_library(lib_touch_key STATIC IMPORTED GLOBAL)
-    set_target_properties(lib_touch_key PROPERTIES IMPORTED_LOCATION ${PTC_LIB_PATH}/common/cortex_m0p/qtm_touch_key_cm0p_0x0002.X.a)
+    if (CONFIG_INPUT_MCHP_ACQUISITION_SIZE EQUAL 12)
+        set_target_properties(lib_touch_key PROPERTIES IMPORTED_LOCATION ${PTC_LIB_PATH}/common/cortex_m0p/qtm_touch_key_cm0p_adc12bit_0x0002.X.a)
+    else()
+        set_target_properties(lib_touch_key PROPERTIES IMPORTED_LOCATION ${PTC_LIB_PATH}/common/cortex_m0p/qtm_touch_key_cm0p_0x0002.X.a)
+    endif()
     target_link_libraries(app PUBLIC lib_touch_key)
 
     # frequency hop library
@@ -29,7 +33,11 @@ if (CONFIG_CPU_CORTEX_M0PLUS)
     # freq_hop_auto library
     if (CONFIG_INPUT_MCHP_TOUCH_EN_FREQ_AUTO_TUNE)
         add_library(lib_freq_hop_auto STATIC IMPORTED GLOBAL)
-        set_target_properties(lib_freq_hop_auto PROPERTIES IMPORTED_LOCATION ${PTC_LIB_PATH}/common/cortex_m0p/qtm_freq_hop_auto_cm0p_0x0004.X.a)
+        if (CONFIG_INPUT_MCHP_ACQUISITION_SIZE EQUAL 12)
+            set_target_properties(lib_freq_hop_auto PROPERTIES IMPORTED_LOCATION ${PTC_LIB_PATH}/common/cortex_m0p/qtm_freq_hop_auto_cm0p_adc12bit_0x0004.X.a)
+        else()
+            set_target_properties(lib_freq_hop_auto PROPERTIES IMPORTED_LOCATION ${PTC_LIB_PATH}/common/cortex_m0p/qtm_freq_hop_auto_cm0p_0x0004.X.a)
+        endif()
         target_link_libraries(app PUBLIC lib_freq_hop_auto)
     endif()
 

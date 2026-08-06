@@ -19,14 +19,24 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif // __cplusplus
+#endif /* __cplusplus */
 
 /* Include files */
 #include "qtm_common_components_api.h"
-#include "qtm_touch_key_0x0002_api.h"
-#include "qtm_freq_hop_auto_0x0004_api.h"
 #include "qtm_scroller_0x000b_api.h"
 
+/* key library specific */
+#if (CONFIG_INPUT_MCHP_ACQUISITION_SIZE == 12)
+#include "qtm_freq_hop_auto_adc12bit_0x0004_api.h"
+#include "qtm_touch_key_adc12bit_0x0002_api.h"
+#define threshold_t uint16_t
+#else
+#include "qtm_freq_hop_auto_0x0004_api.h"
+#include "qtm_touch_key_0x0002_api.h"
+#define threshold_t uint8_t
+#endif /* CONFIG_INPUT_MCHP_TOUCH_EN_12_BIT_KEY_MODULE */
+
+/* device specific */
 #if defined(CONFIG_SOC_FAMILY_MICROCHIP_PIC32CM_JH)
 #include "qtm_acq_pic32cmjh_0x002f_api.h"
 #define qtm_acq_node_config_t qtm_acq_pic32cmjh_node_config_t
@@ -36,10 +46,10 @@ extern "C" {
 #elif defined(CONFIG_SOC_FAMILY_MICROCHIP_PIC32CM_PL)
 #include "qtm_acq_pic32cm_pl10_0x005b_api.h"
 #define qtm_acq_node_config_t   qtm_acq_pic32cm_pl_node_config_t
+#define qtm_acq_device_config_t qtm_acq_pic32cm_pl_device_config_t
 #define qtm_ptc_handler_eoc     qtm_pic32cm_pl_ptc_handler_eoc
 #define qtm_ptc_clear_int()
 #define touch_acq_signal_t      uint32_t
-#define qtm_acq_device_config_t qtm_acq_pic32cm_pl_device_config_t
 #endif
 
 #ifdef __cplusplus

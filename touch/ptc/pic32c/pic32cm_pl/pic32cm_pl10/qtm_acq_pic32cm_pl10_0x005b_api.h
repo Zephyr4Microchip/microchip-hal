@@ -17,8 +17,12 @@
 #define TOUCH_API_PIC32CM_PL_ACQ_MODULE_H
 
 /* Include files */
-#include "qtm_common_components_api.h"
 #include <stdint.h>
+#include "qtm_common_components_api.h"
+
+/* PTC Interrupt vector */
+#define ADC0_vect_num   13
+#define ADC0_vect       _VECTOR(13)
 
 /* Calibration auto-tuning options */
 #define CAL_OPTION_MASK 0x03u
@@ -262,7 +266,7 @@ typedef struct {
 typedef struct {
 	qtm_acquisition_control_t *qtm_acq_control;
 	uint16_t auto_scan_node_number;
-	uint8_t auto_scan_node_threshold;
+	uint16_t auto_scan_node_threshold;
 	uint8_t auto_scan_trigger;
 } qtm_auto_scan_config_t;
 

@@ -11,20 +11,35 @@
  * This header provides a central place to include macro mapping headers
  * for Microchip touch support. These headers map common component header to
  * generic names used by the common driver.
+
+ *  Description:
+ *    Common API across modules
+ *
+ *  Version History: 
+ *    Revision 1.0 - Released 
+ *    Revision 1.1 - FMEA to BIST name change
+ *    Revision 1.2 - Maintain Backward Compatibility with FMEA to BIST name change
+ *    Revision 1.3 - Added DIAG Enums to Touch Return
  */
 
-#ifndef QTM_API_COMMON_INC__
-#define QTM_API_COMMON_INC__
+#ifndef QTM_API_COMMON_INC
+#define QTM_API_COMMON_INC
 
-#include <stddef.h>
 #include <stdint.h>
+#include <stddef.h>
 
+/* Version Information */
+#define COMMON_COMPONENTS_VERSION  0x13
 /* Acquisition type */
 /* Acquisition set config */
-#define NODE_SELFCAP        0x80u
-#define NODE_SELFCAP_SHIELD 0x81u
-#define NODE_MUTUAL         0x40u
-#define NODE_MUTUAL_4P      0x41u
+#define NODE_SELFCAP            0x80u
+#define NODE_SELFCAP_SHIELD     0x81u
+#define NODE_SELFCAP_SHIELD_2L  0x82u
+#define NODE_MUTUAL             0x40u
+#define NODE_MUTUAL_4P          0x41u
+#define NODE_MUTUAL_8P          0x52u
+#define NODE_MUTUAL_16P         0x53u
+#define NODE_MUTUAL_32P         0x54u
 
 /* Touch Library functions return a touch_ret_t */
 typedef enum tag_touch_ret_t {
@@ -43,7 +58,7 @@ typedef enum tag_touch_ret_t {
 	/* Successful completion of FMEA.*/
 	TOUCH_FMEA_SUCCESS = 4u,
 
-	/* Operation not allowed in the current state of the library module. */
+	/* Error in FMEA Module. */
 	TOUCH_FMEA_ERROR = 5u,
 
 	/* MAGIC number used to Program Counter checking. */
@@ -70,9 +85,22 @@ typedef enum tag_touch_ret_t {
 	/* Library Is Unsafe to Use */
 	TOUCH_LIB_UNSAFE = 13u,
 
-	/* Library Is Unable t Calibrate Node */
-	TOUCH_LIB_NODE_CAL_ERROR = 14u
-} touch_ret_t;
+	/* Library Is Unable to Calibrate Node */
+	TOUCH_LIB_NODE_CAL_ERROR = 14u,
+
+	/* Successful completion of BIST.*/
+	TOUCH_BIST_SUCCESS = 15u,
+
+	/* Error in BIST Module. */
+	TOUCH_BIST_ERROR = 16u,
+
+	/* Successful completion of DIAG .*/
+	TOUCH_DIAG_SUCCESS = 15u,
+
+	/* Error in DIAG Module. */
+	TOUCH_DIAG_ERROR = 16u,
+}
+touch_ret_t;
 
 /* Touch library state */
 typedef enum tag_touch_lib_state_t {

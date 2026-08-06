@@ -26,8 +26,7 @@
 #define QTM_KEY_DETECT  0x01u
 
 /* QTLib Timebase */
-#define QTLIB_TIMEBASE 200u
-
+#define QTLIB_TIMEBASE INPUT_MCHP_TOUCH_QTLIB_TIMEBASE
 
 /* type definitions */
 
