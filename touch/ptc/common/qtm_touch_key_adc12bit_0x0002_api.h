@@ -26,7 +26,7 @@
 #define QTM_KEY_DETECT 0x01u
 
 /* QTLib Timebase */
-#define QTLIB_TIMEBASE INPUT_MCHP_TOUCH_QTLIB_TIMEBASE
+#define QTLIB_TIMEBASE CONFIG_INPUT_MCHP_TOUCH_QTLIB_TIMEBASE
 
 /* type definitions */
 /* ! An unsigned 8-bit number setting a sensor detection threshold. */
