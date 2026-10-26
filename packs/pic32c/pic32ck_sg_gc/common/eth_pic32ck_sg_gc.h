@@ -20,6 +20,7 @@ typedef eth_registers_t gmac_registers_t;
 
 /*ETH_NCFGR*/
 #define GMAC_NCFGR  ETH_NCFGR
+#define GMAC_NCFGR_DBW  ETH_NCFGR_DBW
 #define GMAC_NCFGR_SPD_Msk ETH_NCFGR_SPD_Msk
 #define GMAC_NCFGR_FD_Msk ETH_NCFGR_FD_Msk
 #define GMAC_NCFGR_MAXFS_Msk ETH_NCFGR_MAXFS_Msk
@@ -27,6 +28,7 @@ typedef eth_registers_t gmac_registers_t;
 #define GMAC_NCFGR_LFERD_Msk ETH_NCFGR_LFERD_Msk
 #define GMAC_NCFGR_RFCS_Msk ETH_NCFGR_RFCS_Msk
 #define GMAC_NCFGR_RXCOEN_Msk ETH_NCFGR_RXCOEN_Msk
+#define GMAC_NCFGR_PEN_Msk ETH_NCFGR_PEN_Msk
 
 /*ETH_NCR*/
 #define GMAC_NCR ETH_NCR
@@ -38,6 +40,8 @@ typedef eth_registers_t gmac_registers_t;
 
 /*ETH_DCFGR*/
 #define GMAC_DCFGR  ETH_DCFGR
+#define GMAC_DCFGR_TXPBMS  ETH_DCFGR_TXPBMS
+#define GMAC_DCFGR_DDRP  ETH_DCFGR_DDRP
 #define GMAC_DCFGR_DRBS(x) ETH_DCFGR_DRBS(x)
 #define GMAC_DCFGR_RXBMS(x) ETH_DCFGR_RXBMS(x)
 #define GMAC_DCFGR_TXCOEN_Msk ETH_DCFGR_TXCOEN_Msk
@@ -45,6 +49,7 @@ typedef eth_registers_t gmac_registers_t;
 
 /*ETH_ISR*/
 #define GMAC_ISR ETH_ISR
+#define GMAC_ISR_Msk ETH_ISR_Msk
 #define GMAC_ISR_RCOMP_Msk ETH_ISR_RCOMP_Msk
 #define GMAC_ISR_TCOMP_Msk ETH_ISR_TCOMP_Msk
 
@@ -113,6 +118,18 @@ typedef eth_registers_t gmac_registers_t;
 #define GMAC_NCFGR_CLK_MCK64 (4 << 18)
 #define GMAC_NCFGR_CLK_MCK96 (5 << 18)
 
+/*ETH_CTRL*/
+#define GMAC_CTRLA ETH_CTRLA
+#define GMAC_CTRLB ETH_CTRLB
+#define GMAC_CTRLB_GMIIEN ETH_CTRLB_GMIIEN
+#define GMAC_CTRLA_ENABLE(x) ETH_CTRLA_ENABLE(x)
+#define GMAC_CTRLB_GBITCLKREQ ETH_CTRLB_GBITCLKREQ
+#define GMAC_CTRLB_GMIIEN_Msk ETH_CTRLB_GMIIEN_Msk
+#define GMAC_CTRLB_GBITCLKREQ_Msk ETH_CTRLB_GBITCLKREQ_Msk
+
+/*ETH_SYNC*/
+#define GMAC_SYNCB ETH_SYNCB
+
 /*Statistics*/
 #define GMAC_MFR ETH_MFR
 #define GMAC_UFR ETH_UFR
@@ -131,5 +148,6 @@ typedef eth_registers_t gmac_registers_t;
 #define GMAC_HRB ETH_HRB
 #define GMAC_HRT ETH_HRT
 #define GMAC_MFT ETH_MFT
+#define GMAC_TSR ETH_TSR
 
 #endif /* MICROCHIP_COMMON_ETH_PIC32CK_SG_GC_H_ */
