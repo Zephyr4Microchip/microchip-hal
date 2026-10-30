@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2026 Microchip Technology Inc.
+ * SPDX-FileCopyrightText: Copyright (c) 2026 Microchip Technology Inc.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -9,5 +9,6 @@
 
 #include "sercom_pic32cz_ca.h"
 #include "eth_pic32cz_ca.h"
+#include "usbhs_pic32cz_ca.h"
 
 #endif /* MICROCHIP_PIC32CZ_CA_H_ */
